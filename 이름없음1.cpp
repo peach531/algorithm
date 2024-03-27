@@ -1,23 +1,25 @@
 #include<cstdio>
 
 int main()
-
 {
-	int n,N,count,a,i;
-	scanf("%d",&n);
-	for(i = 1;i <= n; i++)
+    int a;
+    int count[10] = {0,};
+    scanf("%d",&a);
+    for (int i = 0;i < 8;i++)
+    {
+    	count[a % 10]++;
+    	a /= 10;
+	}
+    count[6] += count[9] + 1;
+	count[6] /= 2;
+	count[9] = count[6];
+	int uc = 0;
+	for(int i = 0; i < 10;i++)
 	{
-		scanf("%d",&count);
-		N += count;	
+		if(uc < count[i])
+		uc = count[i];
+		
 	}
-	N /= n;
-	if (N >= 80){	
-		printf("easy");
-    }
-    else if(N >= 60){
-    	printf("normal");
-	}
-	else{
-		printf("hard");
-	}
+	printf("%d",uc);
+	return 0;
 }
