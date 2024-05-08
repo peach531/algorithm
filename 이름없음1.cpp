@@ -1,25 +1,17 @@
 #include<cstdio>
+#include<string.h>
 
 int main()
 {
-    int a;
-    int count[10] = {0,};
-    scanf("%d",&a);
-    for (int i = 0;i < 8;i++)
-    {
-    	count[a % 10]++;
-    	a /= 10;
-	}
-    count[6] += count[9] + 1;
-	count[6] /= 2;
-	count[9] = count[6];
-	int uc = 0;
-	for(int i = 0; i < 10;i++)
+	char str[1001];
+	int check = 0;
+	int len = strlen(str);
+	for(int i = 0; i < len/2;i++)
 	{
-		if(uc < count[i])
-		uc = count[i];
-		
+		if(str[i] != str[len - 1 - i])
+		{
+			check = 1;
+			break;
+		}
 	}
-	printf("%d",uc);
-	return 0;
 }
