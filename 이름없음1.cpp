@@ -1,24 +1,19 @@
 #include<cstdio>
-#include<algorithm>
-using namespace std;
 
-int dp[1000000];
-
-int main(){
-	int n;
-	scanf("%d",&n);
-	
-	dp[1] = 0;
-	
-	for(int i = 2;i<=n;i++){
-		dp[i] = dp[i-1] + 1;
-		
-		if(i%2==0){
-			dp[i] = min(dp[i],dp[i/2]+1);
-		}
-		if(i%3==0){
-			dp[i] = min(dp[i],dp[i/3]+1);
-		}
+int gcd(int x,int y){
+	if(y==0){
+		return x;
 	}
-	printf("%d",dp[n]);
+	return gcd(y,x%y);
+}
+int main(){
+    int t;
+    scanf("%d",&t);
+    
+    while(t--){
+    	int a,b;
+    	scanf("%d %d",&a,&b);
+    	int g = gcd(a,b);
+    	printf("%d\n",(a*b)/g);
+	}
 }
